@@ -1,0 +1,48 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    justify-content: center;
+}
+body{
+    background-color: beige;
+}
+button{
+    cursor: grab;
+}
+.addBtn{
+    font-size: 40px;
+    padding: 20px;
+    background-color: chartreuse;
+    border-radius: 5px;
+    border: none;
+}
+.pcontainer{
+    border: 2px solid green;
+    padding: 10px;
+}
+.oneoftodos{
+    display: flex;
+    font-size: 20px;
+    margin-top: 25px;
+    
+    
+}
+.removebtn{
+    margin-left: 120px;
+    margin-top: 0px;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: red;
+    color: aliceblue;
+}
+.text{
+    margin: 30px;
+    font-size: 40px;
+    padding: 20px 20px 20px 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: black;
+}
