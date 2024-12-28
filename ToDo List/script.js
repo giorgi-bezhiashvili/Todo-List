@@ -1,55 +1,88 @@
-//variables
+// Variables
 const textElem = document.querySelector(".text");
 const addBtnElem = document.querySelector(".addBtn");
 const TodocontainerElem = document.querySelector(".Todo-Container");
-let todo = JSON.parse(localStorage.getItem("todo")) || []; //save in local storage
+let todo = JSON.parse(localStorage.getItem("todo")) || [];
+const dateElem = document.getElementById("Date");
+
+// Clean up empty todos
+todo = todo.filter(item => item.name.trim() !== "");
+
 
 renderTodo();
 
-
-//add elements in array after clicking on mouse
+// Add elements to the array after clicking the mouse
 addBtnElem.addEventListener("click", function () {
-    const newtodo = textElem.value.trim(); 
-    if (newtodo) {
-        todo.push(newtodo);
+    const newTodoName = textElem.value.trim();
+    const newTodoDate = dateElem.value.trim();
+    if (newTodoName) {
+        const newTodo = {
+            name: newTodoName,
+            date: newTodoDate 
+        };
+        todo.push(newTodo);
         updateLocalStorage();
-        renderTodo();
-        textElem.value = "";
+        renderTodo(); 
+        //clears after clicking
+        textElem.value = ""; 
+        dateElem.value = "";
     }
 });
 
-//add elements in array after clicking enter
+// Add elements to the array after pressing Enter
 textElem.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
-        const newtodo = textElem.value.trim()
-        if (newtodo) {
-            todo.push(newtodo)
-            updateLocalStorage()
-            renderTodo()
-            textElem.value = ""
+        const newTodoName = textElem.value.trim();
+        const newTodoDate = dateElem.value.trim();
+        if (newTodoName) {
+            const newTodo = {
+                name: newTodoName,
+                date: newTodoDate 
+            };
+            todo.push(newTodo);
+            updateLocalStorage();
+            renderTodo();
+            //clears after clicking
+            textElem.value = ""; 
+            dateElem.value = "";
         }
     }
 });
 
-//render ToDo list
+// Render
 function renderTodo() {
     let html = "";
-    for (let i = 0; i < todo.length; i++) {
+
+    
+    const filteredTodos = todo.filter(item => item.name.trim() !== "");
+
+    for (let i = 0; i < filteredTodos.length; i++) {
+        const name = filteredTodos[i].name;
+        const date = filteredTodos[i].date || "No date provided"; // Default message if date is empty
         html += `<div class="oneoftodos">
-            <p class="pcontainer">${todo[i]}</p>
+            <p class="pcontainer">${name} - <small>${date}</small></p>
             <button class="removebtn" onclick="removeTodo(${i})">Remove</button>
         </div>`;
     }
+
     TodocontainerElem.innerHTML = html;
+
+    // Hide the container only if there are no valid todos
+    if (filteredTodos.length === 0) {
+        TodocontainerElem.style.display = "none";
+    } else {
+        TodocontainerElem.style.display = "block";
+    }
 }
 
-//remove button
+// Remove ToDo item
 function removeTodo(index) {
-    todo.splice(index, 1); // Remove the todo at the given index
-    updateLocalStorage(); // Save updated array to localStorage
-    renderTodo(); // Re-render the updated list
+    todo.splice(index, 1); // Remove the item at the given index
+    updateLocalStorage(); 
+    renderTodo(); // Re-render the list
 }
 
+// Update localStorage
 function updateLocalStorage() {
-    localStorage.setItem("todo", JSON.stringify(todo)); // Save array as a JSON string
+    localStorage.setItem("todo", JSON.stringify(todo)); // Save the array as a JSON string
 }
