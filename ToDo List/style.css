@@ -40,9 +40,15 @@ button{
 .text{
     margin: 30px;
     font-size: 40px;
-    padding: 20px 20px 20px 20px;
+    padding: 20px;
     border: 2px solid black;
     border-radius: 5px;
     background-color: #ffffff;
     color: black;
+}
+#Date{
+    font-size: 40px;
+    padding: 15px;
+    border-radius: 10px;
+    margin-right: 20px;
 }
