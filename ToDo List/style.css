@@ -11,8 +11,9 @@ button{
     cursor: grab;
 }
 .addBtn{
-    font-size: 40px;
-    padding: 20px;
+    font-size: 20px;
+    padding: 15px;
+    margin-left: 12px;
     background-color: chartreuse;
     border-radius: 5px;
     border: none;
@@ -39,7 +40,7 @@ button{
 }
 .text{
     margin: 30px;
-    font-size: 40px;
+    font-size: 30px;
     padding: 20px;
     border: 2px solid black;
     border-radius: 5px;
@@ -47,8 +48,6 @@ button{
     color: black;
 }
 #Date{
-    font-size: 40px;
-    padding: 15px;
-    border-radius: 10px;
-    margin-right: 20px;
+    height: 40px;
+    font-size: 20px;
 }
